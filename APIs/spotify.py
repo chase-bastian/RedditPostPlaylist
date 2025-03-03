@@ -31,8 +31,8 @@ def create_list(cid, csec, list_name, sub_id, song_info):
     playlist_description = "Songs populated from the comments on Reddit thread " + sub_id
     track_ids = []
     list_url = ""
-    #for i in range(len(song_info)):
-    for i in range(len(song_info))[:5]:
+    for i in range(len(song_info)):
+    # for i in range(len(song_info))[:5]:
         if len(song_info[i]) > 0:
             #try:
             results = sp.search(q=song_info[i], limit=5, type="track")

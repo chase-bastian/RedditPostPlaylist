@@ -159,16 +159,26 @@ def strip_extra(text, delim):
     return " ".join(words[pos1:pos2])
 
 if __name__ == "__main__":
-    logger.debug('This is a debug message')
-    logger.info('This is an info message')
-    logger.error('This is an error message')
+    # Create the argument parser
+    parser = argparse.ArgumentParser(description="Accept a URL as an argument")
+
+    # Add the URL argument
+    parser.add_argument('url', type=str, help="The URL to process")
+
+    # Parse the command-line arguments
+    args = parser.parse_args()
+
+    # Access the URL from the arguments
+    url = args.url
 
     #client_secret=""
     #client_id=""
     #version="0.0.1"
     #user_agent="post2play v: " + version + " by https://github.com/chase-bastian/RedditPostPlaylist"
 
-    url="https://www.reddit.com/r/Music/comments/1j1l0nz/saddest_songs_of_all_time/"
+    url = args.url
+    if not args.url:
+        url="https://www.reddit.com/r/Music/comments/1j1l0nz/saddest_songs_of_all_time/"
 
     reddit = praw.Reddit(
     client_id=reddit_client_id,
